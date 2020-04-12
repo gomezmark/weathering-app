@@ -2,7 +2,7 @@ import colors from 'vuetify/es5/util/colors'
 require('dotenv').config()
 
 export default {
-  mode: 'universal',
+  mode: 'spa',
   env: {
     WEATHER_API_KEY: process.env.WEATHER_API_KEY,
     DATA: process.env.DATA,
