@@ -40,16 +40,21 @@ const createStore = () => {
         }
     },
     actions: {
-        // async nuxtServerInit ({ dispatch }) {
-        //     console.log('server init')
-        //     await dispatch('getLocationWeather', { city: state.currentCity, country: state.currentCountry } )
-        // },
         async getLocationWeather ({ commit }, payload ) {
-            commit('SET_LOADING', true)
-            const query = {
-                q: `${payload.city},${payload.country}`,
+            let query = {
                 appid: process.env.WEATHER_API_KEY
-            };
+            }
+            commit('SET_LOADING', true)
+
+            if (payload.type === 1) {
+                query['q'] = `${payload.city},${payload.country}`;
+            } else {
+                query = {
+                    ...query,
+                    lat: payload.lat,
+                    lon: payload.lon
+                }
+            }
             let location = {}, hourly = {}
 
             if (process.env.DATA === 'local') {
@@ -91,13 +96,28 @@ const createStore = () => {
         async getCityInformation ({ commit }, payload ) {
             const options = {
                 near: `${payload.city},${payload.country}`,
-                client_id: process.env.FORESQURE_CLIENT_ID,
-                client_secret: process.env.FORESQURE_API_KEY,
+                client_id: process.env.FS_ID,
+                client_secret: process.env.FS_KEY,
                 v: '20191209'
             };
             
-            const result = await this.$axios.get('https://api.foursquare.com/v2/venues/search', options);
-            return payload
+            const result = await this.$axios.get(`/foursquare/search?${querystring.stringify(options)}`, { 
+                headers: {
+                    'Access-Control-Allow-Origin': "*",
+                    'crossDomain': true
+                } 
+            });
+            
+            if (result.status && result.status === 200) {
+                return {
+                    status: true,
+                    data: result.data
+                }
+            } else {
+                return {
+                    status: false
+                }
+            }
         }
     }
   })

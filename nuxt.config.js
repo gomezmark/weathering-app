@@ -5,7 +5,9 @@ export default {
   mode: 'universal',
   env: {
     WEATHER_API_KEY: process.env.WEATHER_API_KEY,
-    DATA: process.env.DATA
+    DATA: process.env.DATA,
+    FS_ID: process.env.FOURSQUARE_CLIENT_ID,
+    FS_KEY: process.env.FOURSQUARE_API_KEY
   },
   /*
   ** Headers of the page
@@ -82,7 +84,7 @@ export default {
   },
   proxy: {
     '/weather/': { target: process.env.WEATHER_BASE_URL, pathRewrite: { '^/weather/' : '' }},
-    '/foresquare/': { target: process.env.FORESQURE_BASE_URL, pathRewrite: { '^/foresquare/': '' }}
+    '/foursquare/': { target: process.env.FOURSQUARE_BASE_URL, pathRewrite: { '^/foursquare/': '' }}
   },
   /*
   ** vuetify module configuration
@@ -101,6 +103,9 @@ export default {
           warning: colors.amber.base,
           error: colors.deepOrange.accent4,
           success: colors.green.accent3
+        },
+        light: {
+          primary: '#10071d'
         }
       }
     }
