@@ -15,6 +15,9 @@
 ## Build Setup
 
 ```bash
+# clone project
+$ git clone https://github.com/gomezmark/weathering-app.git
+
 # install dependencies
 $ yarn install
 
