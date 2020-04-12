@@ -32,6 +32,9 @@ const createStore = () => {
         },
         SET_DATES (state, payload) {
             state.dates = [ ...payload ]
+        },
+        SET_CURRENT_CITY (state, payload) {
+            state.currentCity = payload
         }
     },
     getters: {
@@ -78,6 +81,7 @@ const createStore = () => {
             
             if (location.status && location.status === 200) {
                 commit('SET_LOCATION_WEATHER', location.data)
+                commit('SET_CURRENT_CITY', location.data.name)
             }
             if (hourly.status && hourly.status === 200) {
                 let dates = []

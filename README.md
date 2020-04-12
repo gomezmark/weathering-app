@@ -1,6 +1,16 @@
 # weather-app
 
 > simple web application for weather forecast
+> I've created a simple deisgn that focus on the main weather temperature of the city
+> The upper section is for main details
+> For the bottom section I added the following features
+> 1. sunrise and sunset details
+> 2. graphical representation of temperature
+> 3. selection of the day within the range given
+>
+> Default Location
+> If the geolocation is enabled, the first detials will the location of the user
+> Otherwise the default value will be in tokyo
 
 ## Build Setup
 

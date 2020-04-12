@@ -8,6 +8,13 @@
             <search-field/>
           </v-flex>
         </v-layout>
+          <div v-if="$store.state.loading && !$store.state.locationWeather">
+            <v-layout row wrap justify-center align-center style="min-height:500px">
+              <v-progress-circular 
+                size="100"
+                indeterminate color="white"></v-progress-circular>
+            </v-layout>
+          </div>
           <div 
             v-if="$store.state.locationWeather"
             class="w-container">
