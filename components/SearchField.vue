@@ -17,14 +17,18 @@ export default {
     data () {
         return {
             selected: "Tokyo",
+            country: "JP",
             cities: ["Tokyo", "Yokohama", "Kyoto", "Osaka", "Sapporo", "Nagoya"]
         }
     },
     watch: {
-        selected (value) {
-            console.log(value)
-            this.$store.dispatch('getCityInformation', { city: value, country: 'JP' })
+        async selected (value) {
+            // const city = await this.$store.dispatch('getCityInformation', { city: value, country: 'JP' })
+            this.$store.dispatch('getLocationWeather', { city: value, country: this.country })
         }
+    },
+    async created () {
+        const res = await this.$store.dispatch('getLocationWeather', { city: this.selected, country: this.country })
     }
 }
 </script>

@@ -5,8 +5,10 @@
     </v-content>
     <v-footer
       app
+      color="primary"
     >
-      <span>&copy; {{ new Date().getFullYear() }}</span>
+      <p
+        class="white--text text-sm-center mb-0" style="font-size:12px">&copy; {{ new Date().getFullYear() }} | MG</p>
     </v-footer>
   </v-app>
 </template>

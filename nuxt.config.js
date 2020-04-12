@@ -1,7 +1,12 @@
 import colors from 'vuetify/es5/util/colors'
+require('dotenv').config()
 
 export default {
   mode: 'universal',
+  env: {
+    WEATHER_API_KEY: process.env.WEATHER_API_KEY,
+    DATA: process.env.DATA
+  },
   /*
   ** Headers of the page
   */
@@ -61,7 +66,7 @@ export default {
     proxy: true,
     debug: true,
     retry: {
-      retries: 1
+      retries: 0
     },
     headers: {
       'Content-Type': 'application/x-gzip;',
@@ -76,8 +81,8 @@ export default {
     }
   },
   proxy: {
-    '/weather/': { target: process.env.WEATHER_BASE_URL, },
-    '/foresquare/': { target: process.env.FORESQUARE_BASE_URL, pathRewrite: { '/foresquare/': '' }}
+    '/weather/': { target: process.env.WEATHER_BASE_URL, pathRewrite: { '^/weather/' : '' }},
+    '/foresquare/': { target: process.env.FORESQURE_BASE_URL, pathRewrite: { '^/foresquare/': '' }}
   },
   /*
   ** vuetify module configuration

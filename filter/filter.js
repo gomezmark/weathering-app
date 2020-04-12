@@ -8,6 +8,10 @@ Vue.filter('formatDateTime', (value, format) => {
     }
 })
 
+Vue.filter('convertTemp', (kelvin, celsius) => {
+    return celsius ? `${parseInt(kelvin - 273.15)}° C` : `${parseInt((kelvin - 273.15) * 1.8 + 32)}° F`
+})
+
 Vue.filter('convertKelvinToCelsius', (kelvin) => {
     return parseInt(kelvin - 273.15);
 })
