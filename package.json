@@ -1,0 +1,23 @@
+{
+  "name": "weather-app",
+  "version": "1.0.0",
+  "description": "simple web application for weather forecast",
+  "author": "Mark Gomez",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "@nuxtjs/axios": "^5.9.7",
+    "nuxt": "^2.0.0",
+    "vue-moment": "^4.1.0"
+  },
+  "devDependencies": {
+    "@nuxtjs/vuetify": "^1.0.0",
+    "stylus": "^0.54.7",
+    "stylus-loader": "^3.0.2"
+  }
+}
